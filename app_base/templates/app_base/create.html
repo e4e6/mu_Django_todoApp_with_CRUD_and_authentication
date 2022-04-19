@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Create</h1>
+{% comment %} <a href="{% url 'app_base:Index_ListView_name' %}"> Home </a> {% endcomment %}
+<br>
+<br>
+
+
+<form action="" method="post">
+    {% csrf_token %}
+    {{form.as_p}}
+    {% comment %} <button type="submit">Submit</button> {% endcomment %}
+    <input type="submit" value="Submit">
+</form>
+
+{% endblock content %}

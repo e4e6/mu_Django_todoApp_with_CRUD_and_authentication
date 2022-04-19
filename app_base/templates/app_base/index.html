@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+
+<div class="main_div">
+    <a href="{% url 'app_base:Form_CreateView_name'%}">Create</a>
+
+    <form style="margin-top:10px;" action="" method="get">
+        <input type="text" name="text_search_input" id="">
+        <input type="submit" value="search">
+    </form>
+
+    <h5>hello {{request.user}} you have {{count}} incomplete todo{{count|pluralize:"s"}}</h5>
+
+
+
+    <div class="tasks_list">
+        {% for task in tasks %}
+        <div style="margin: 5px 0px;">
+            {% if task.complete %}
+            <i><s><a href="{% url 'app_base:Form_UpdateView_name' task.id %}">{{task.title}}</a></s></i>
+            <a class="left-delete" href="{% url 'app_base:Form_DeleteView_name' task.id %}">delete</a>
+            {% else %}
+            <a href="{% url 'app_base:Form_UpdateView_name' task.id %}">{{task.title}}</a>
+            <a class="left-delete" href="{% url 'app_base:Form_DeleteView_name' task.id %}">delete</a>
+            {% endif %}
+        </div>
+        {%empty%}
+        <h3> we have no tasks </h3>
+        {% endfor %}
+    </div>
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+{% endblock content %}
